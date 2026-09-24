@@ -1,22 +1,20 @@
-﻿/**
+/**
  * invitation-cover.js
- * Orchestrates the Mysterious Islamic Wedding Invitation Opening Sequence.
+ * Single-Page Cinematic 3D Islamic Portal Entry & Continuous Camera Transition
  */
 (function () {
   'use strict';
 
-  function initCover() {
-    var overlay = document.getElementById('invitationOverlay');
-    var stage = document.getElementById('invitationStage');
+  function initOpeningExperience() {
+    var overlay = document.getElementById('opening-experience');
     var btnOpen = document.getElementById('btnOpenInvitation');
-    var btnSkip = document.getElementById('invitationSkipBtn');
+    var btnSkip = document.getElementById('openingSkipBtn');
 
-    if (!overlay || !stage || !btnOpen) return;
+    if (!overlay || !btnOpen) return;
 
-    // Check prefers-reduced-motion
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Lock scrolling on initial load
+    // Lock body scrolling initially
     document.body.style.overflow = 'hidden';
 
     var isOpening = false;
@@ -25,56 +23,61 @@
       if (isOpening) return;
       isOpening = true;
 
-      // 1. Start audio fade-in upon user gesture
+      // 1. Start background music upon user gesture
       if (window.startBackgroundMusic) {
         window.startBackgroundMusic();
       }
 
-      // 2. Trigger 3D unfolding & reveal stage
-      stage.classList.add('is-opening');
+      // 2. Trigger continuous 3D camera fly-through
+      overlay.classList.add('is-opening');
 
-      var totalDelay = prefersReducedMotion ? 1200 : 5200;
+      // 3. Coordinate timeline (3.2 seconds total sequence)
+      var totalDuration = prefersReducedMotion ? 900 : 3200;
 
-      // 3. Complete transition to main website
       setTimeout(function () {
-        stage.classList.add('is-transitioning');
-        setTimeout(function () {
-          dismissOverlay();
-        }, 800);
-      }, totalDelay);
+        finishOpening();
+      }, totalDuration);
     }
 
-    function dismissOverlay() {
-      overlay.classList.add('is-dismissed');
+    function finishOpening() {
+      overlay.classList.add('is-finished');
       document.body.style.overflow = '';
       overlay.setAttribute('aria-hidden', 'true');
+      overlay.style.pointerEvents = 'none';
 
       // Record in session
       try {
         sessionStorage.setItem('invitation_opened', 'true');
       } catch (e) {}
 
-      // Trigger scroll reveal refresh for hero
+      // Refresh any scroll reveal calculations for the wedding site
       if (window.initScrollReveal) {
         window.initScrollReveal();
       }
+
+      // Completely remove from render tree after fade completes
+      setTimeout(function () {
+        overlay.style.display = 'none';
+      }, 800);
     }
 
-    // Click / Touch on Open Button
+    // Touch & Click listeners
     btnOpen.addEventListener('click', function (e) {
       e.preventDefault();
       openInvitation();
     });
 
-    // Skip Button
     if (btnSkip) {
       btnSkip.addEventListener('click', function (e) {
         e.preventDefault();
-        dismissOverlay();
+        if (window.startBackgroundMusic) {
+          window.startBackgroundMusic();
+        }
+        finishOpening();
       });
     }
 
-    // Keyboard support for Open Button
+    // Keyboard accessibility (Enter / Space)
     btnOpen.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -84,8 +87,8 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCover);
+    document.addEventListener('DOMContentLoaded', initOpeningExperience);
   } else {
-    initCover();
+    initOpeningExperience();
   }
 })();

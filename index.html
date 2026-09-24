@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -48,112 +48,102 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
      MYSTERIOUS ISLAMIC INVITATION ENTRY COVER (No Information Spoilers)
      ════════════════════════════════════════════════════════════════════ -->
-<div class="invitation-overlay" id="invitationOverlay" aria-modal="true" role="dialog" aria-label="Wedding Invitation Cover">
+<!-- ═══════════════════════════════════════════════════════════════════════
+     OPENING EXPERIENCE (Single-Page Cinematic 3D Islamic Portal Entry)
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="opening-experience" class="opening-experience" aria-modal="true" role="dialog" aria-label="Wedding Invitation Entry Portal">
 
   <!-- Subtle Skip Button (Top Right) -->
-  <button class="invitation-skip-btn" id="invitationSkipBtn" aria-label="Skip to wedding details">
+  <button class="opening-skip-btn" id="openingSkipBtn" type="button" aria-label="Skip opening entrance">
     Skip &rarr;
   </button>
 
-  <!-- 3D Gatefold Stage -->
-  <div class="invitation-stage" id="invitationStage">
+  <!-- 3D Camera Rig / Viewport -->
+  <div class="camera-rig" id="cameraRig">
 
-    <!-- FRONT COVER (Visible First: No names, no dates, no venue) -->
-    <div class="invitation-cover" id="invitationCover">
+    <!-- Warm Golden Light / Portal Glow behind the doors -->
+    <div class="portal-light" id="portalLight" aria-hidden="true"></div>
 
-      <!-- Left & Right Islamic Arched Doors / Gatefold Panels -->
-      <div class="cover-panel cover-panel--left" aria-hidden="true">
-        <div class="cover-panel__inner">
-          <div class="cover-pattern"></div>
-        </div>
+    <!-- Architectural Islamic Doorway Frame & Panels -->
+    <div class="door-frame" id="doorFrame">
+
+      <!-- Left Door Wing / Portal -->
+      <div class="door-wing door-wing--left" aria-hidden="true">
+        <div class="door-panel-texture"></div>
+        <div class="door-arch-contour"></div>
+        <div class="door-gold-filigree"></div>
+        <div class="door-handle door-handle--left"></div>
       </div>
 
-      <div class="cover-panel cover-panel--right" aria-hidden="true">
-        <div class="cover-panel__inner">
-          <div class="cover-pattern"></div>
-        </div>
+      <!-- Right Door Wing / Portal -->
+      <div class="door-wing door-wing--right" aria-hidden="true">
+        <div class="door-panel-texture"></div>
+        <div class="door-arch-contour"></div>
+        <div class="door-gold-filigree"></div>
+        <div class="door-handle door-handle--right"></div>
       </div>
 
-      <!-- Center Card Content on Cover -->
-      <div class="cover-content" id="coverContent">
+      <!-- Center Architectural Entrance Arch & Invitation Plate -->
+      <div class="door-centerpiece" id="doorCenterpiece">
 
         <!-- Arabic Bismillah Calligraphy -->
-        <p class="cover__arabic-bismillah" lang="ar" dir="rtl">
+        <p class="door__bismillah" lang="ar" dir="rtl">
           بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
         </p>
 
         <!-- English Translation -->
-        <div class="cover__translation">
+        <div class="door__translation">
           <span>IN THE NAME OF ALLAH</span>
           <span>THE MOST GRACIOUS, THE MOST MERCIFUL</span>
         </div>
 
-        <div class="cover__divider-ornament" aria-hidden="true">
-          <span class="cover__divider-line"></span>
-          <span class="cover__divider-symbol">&#10057;</span>
-          <span class="cover__divider-line"></span>
+        <div class="door__divider" aria-hidden="true">
+          <span class="door__divider-line"></span>
+          <span class="door__divider-star">&#10057;</span>
+          <span class="door__divider-line"></span>
         </div>
 
-        <!-- Refined Welcome Statement -->
-        <h1 class="cover__welcome-title">A Beautiful Beginning Awaits</h1>
-        <p class="cover__welcome-sub">With the blessings of Allah</p>
+        <!-- Welcoming Statement (Zero Spoilers) -->
+        <h1 class="door__title">A Beautiful Beginning Awaits</h1>
+        <p class="door__subtitle">With the blessings of Allah</p>
 
-        <!-- Interactive Wax Seal / Open Button -->
-        <div class="cover__action-wrap">
-          <button class="cover__open-btn" id="btnOpenInvitation" aria-label="Open wedding invitation">
-            <span class="cover__open-btn-seal" aria-hidden="true">
-              <svg viewBox="0 0 40 40" class="cover__seal-svg">
-                <!-- Islamic 8-point geometric star (Rub el Hizb) -->
-                <polygon points="20,2 24,14 36,10 29,20 38,27 26,29 24,40 18,30 6,36 10,24 2,20 12,14" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="20" cy="20" r="4" fill="currentColor"/>
+        <!-- Interactive Seal / Open Button (No blue square) -->
+        <div class="door__action-wrap">
+          <button class="door__open-btn" id="btnOpenInvitation" type="button" aria-label="Open wedding invitation">
+            <span class="door__seal-medallion" aria-hidden="true">
+              <svg viewBox="0 0 48 48" class="door__seal-svg">
+                <!-- 8-point geometric star Rub el Hizb with inner circle -->
+                <polygon points="24,2 29,14 42,10 34,22 45,30 31,33 28,46 21,34 7,41 12,28 3,23 15,16" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="24" cy="24" r="5" fill="currentColor"/>
               </svg>
             </span>
-            <span class="cover__open-btn-text">OPEN INVITATION</span>
-            <span class="cover__open-btn-sub">Tap to enter</span>
+            <span class="door__open-text">OPEN INVITATION</span>
+            <span class="door__open-sub">Tap to enter</span>
           </button>
         </div>
 
-      </div><!-- /.cover-content -->
+      </div><!-- /.door-centerpiece -->
 
-    </div><!-- /.invitation-cover -->
+    </div><!-- /.door-frame -->
 
-    <!-- INNER REVEAL STAGE (Appears When Cover Unfolds) -->
-    <div class="invitation-reveal" id="invitationReveal" aria-live="polite">
+    <!-- Fly-Through Name Reveal Plane (Appears in 3D camera trajectory through the parted doors) -->
+    <div class="portal-reveal" id="portalReveal" aria-live="polite">
+      <p class="reveal__prelude">In the name of Allah, we begin...</p>
+      <div class="reveal__names-wrap">
+        <h2 class="reveal__bride">SHEHARBAN</h2>
+        <span class="reveal__amp">&amp;</span>
+        <h2 class="reveal__groom">MUHAMMED FASIL</h2>
+      </div>
+      <div class="reveal__date-wrap">
+        <span class="reveal__date">25 OCTOBER 2026</span>
+        <span class="reveal__dot">&bull;</span>
+        <span class="reveal__time">SUNDAY · 11:30 AM</span>
+      </div>
+    </div><!-- /.portal-reveal -->
 
-      <!-- Golden Radiant Backlight -->
-      <div class="reveal-backlight" aria-hidden="true"></div>
+  </div><!-- /.camera-rig -->
 
-      <div class="reveal-content">
-
-        <!-- Step 1: Sacred Prelude -->
-        <p class="reveal__prelude" id="revealPrelude">In the name of Allah, we begin...</p>
-        <p class="reveal__chapter" id="revealChapter">A beautiful new chapter</p>
-
-        <div class="reveal__divider" aria-hidden="true"></div>
-
-        <!-- Step 2: Emotional Name Reveal -->
-        <div class="reveal__names-wrap">
-          <h2 class="reveal__name reveal__name--bride" id="revealBride">SHEHARBAN</h2>
-          <span class="reveal__amp" id="revealAmp">&amp;</span>
-          <h2 class="reveal__name reveal__name--groom" id="revealGroom">MUHAMMED FASIL</h2>
-        </div>
-
-        <!-- Step 3: Secondary Reveal (Date, Day, Time & Venue) -->
-        <div class="reveal__details" id="revealDetails">
-          <p class="reveal__date">25 OCTOBER 2026</p>
-          <p class="reveal__day-time">SUNDAY &bull; 11:30 AM</p>
-          <div class="reveal__small-divider" aria-hidden="true"></div>
-          <p class="reveal__venue">DELIGHT CONVENTION CENTER</p>
-          <p class="reveal__location">VAZHIKKADAVU, PUVATHIPOYIL</p>
-        </div>
-
-      </div><!-- /.reveal-content -->
-
-    </div><!-- /.invitation-reveal -->
-
-  </div><!-- /.invitation-stage -->
-
-</div><!-- /.invitation-overlay -->
+</div><!-- /#opening-experience -->
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
@@ -210,7 +200,7 @@
 </header><!-- /.nav -->
 
 
-<main id="main-content">
+<main id="wedding-site" role="main">
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      HERO — Cinematic Opening Screen
@@ -282,8 +272,8 @@
 
     <!-- CTA -->
     <div class="hero__cta">
-      <a href="#save-the-date" class="btn btn--outline btn--hero" aria-label="Open wedding invitation">
-        Open Invitation
+      <a href="#save-the-date" class="btn btn--outline btn--hero" aria-label="View ceremony details">
+        Save The Date
       </a>
     </div>
 
@@ -593,8 +583,6 @@
   </div><!-- /.container -->
 </section><!-- /#venue -->
 
-</main><!-- /#main-content -->
-
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOOTER
@@ -626,6 +614,7 @@
 
   </div><!-- /.footer__inner -->
 </footer>
+</main><!-- /#wedding-site -->
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
