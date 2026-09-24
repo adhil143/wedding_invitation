@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════
    nav.css — Responsive Navigation (Desktop + Mobile Hamburger)
    ═══════════════════════════════════════════════════════════════════════ */
 
@@ -152,15 +152,16 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
-  padding: 8px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
   cursor: pointer;
   background: none;
   border: none;
   z-index: 110;
   position: relative;
   flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .nav__hamburger-bar {

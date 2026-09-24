@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════
    hero.css — Cinematic Hero Section
    Islamic Wedding Aesthetic: Dignified Invocations & Gold Accents
    ═══════════════════════════════════════════════════════════════════════ */
@@ -9,8 +9,8 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100svh;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -334,9 +334,13 @@
   animation: scrollDot 2s ease-in-out infinite;
 }
 
+@media (max-width: 768px) {
+  .hero__bg { background-position: center top; }
+}
+
 @media (max-width: 480px) {
-  .hero__names { font-size: clamp(2.4rem, 10vw, 3.8rem); }
-  .hero__content { padding-inline: var(--sp-4); }
+  .hero__names { font-size: clamp(2.2rem, 9.5vw, 3.8rem); }
+  .hero__content { padding-inline: clamp(14px, 4vw, var(--sp-4)); }
 }
 
 @media (min-width: 768px) {

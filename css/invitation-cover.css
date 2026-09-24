@@ -1,7 +1,11 @@
 /* ═══════════════════════════════════════════════════════════════════════
    invitation-cover.css
-   Single-Page Architectural Islamic Doorway Opening Experience
-   (NO zoom, NO scaling text, stable readable reveal, smooth dissolution)
+   Mobile-First Architectural Islamic Doorway Opening Experience
+   - Base styles: 320px+ (Mobile First)
+   - Progressive enhancement: 375px, 412px, 768px, 1024px, 1280px
+   - Landscape mobile support: max-height: 600px
+   - Safe areas: env(safe-area-inset-*)
+   - Zero aggressive scale / zoom on text or website
    ═══════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────
@@ -20,26 +24,29 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  height: 100svh;
+  height: 100dvh;
   background: #090506;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1200px;
-  -webkit-perspective: 1200px;
+  perspective: 900px;
+  -webkit-perspective: 900px;
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   will-change: opacity;
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.8s;
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 3.7s, visibility 0.8s 3.7s;
 }
 
 /* Soft dissolution into the wedding website (starts at 3.7s, complete by 4.5s) */
 .opening-experience.is-opening {
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 3.7s, visibility 0.8s 3.7s;
   opacity: 0;
   pointer-events: none;
 }
@@ -63,15 +70,15 @@
    ───────────────────────────────────────────────────────────────────── */
 .opening-skip-btn {
   position: absolute;
-  top: 18px;
-  right: 20px;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
   z-index: 10020;
   font-family: var(--font-sans);
   font-size: 0.62rem;
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(197, 160, 89, 0.65);
+  color: rgba(197, 160, 89, 0.7);
   background: transparent;
   border: 1px solid rgba(197, 160, 89, 0.25);
   padding: 6px 14px;
@@ -80,6 +87,11 @@
   -webkit-tap-highlight-color: transparent !important;
   outline: none !important;
   box-shadow: none !important;
+  min-height: 36px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
 }
 
@@ -100,7 +112,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   3. STABLE CAMERA RIG (NO LARGE ZOOM / SCALE)
+   3. STABLE CAMERA RIG (Zero scale, zero zoom)
    ───────────────────────────────────────────────────────────────────── */
 .camera-rig {
   position: relative;
@@ -109,16 +121,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  transform: none;
-  /* Very subtle spatial breathing only (max 1.02, NO zoom) */
-  transition: transform 2.0s cubic-bezier(0.22, 1, 0.36, 1) 1.2s;
-  will-change: transform;
-}
-
-.opening-experience.is-opening .camera-rig {
-  transform: scale(1.02);
+  transform: none !important;
+  will-change: auto;
 }
 
 /* ─────────────────────────────────────────────────────────────────────
@@ -126,12 +130,12 @@
    ───────────────────────────────────────────────────────────────────── */
 .portal-light {
   position: absolute;
-  width: min(85vw, 560px);
-  height: min(85vw, 560px);
+  width: min(85vw, 480px);
+  height: min(85vw, 480px);
   border-radius: 50%;
-  background: radial-gradient(circle at center, rgba(240, 222, 180, 0.45) 0%, rgba(197, 160, 89, 0.22) 40%, rgba(92, 17, 30, 0.08) 65%, transparent 80%);
-  filter: blur(40px);
-  -webkit-filter: blur(40px);
+  background: radial-gradient(circle at center, rgba(240, 222, 180, 0.42) 0%, rgba(197, 160, 89, 0.2) 40%, rgba(92, 17, 30, 0.08) 65%, transparent 80%);
+  filter: blur(35px);
+  -webkit-filter: blur(35px);
   opacity: 0;
   transition: opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.6s;
   pointer-events: none;
@@ -143,20 +147,20 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   5. ARCHITECTURAL ISLAMIC DOORWAY FRAME & WINGS
+   5. ARCHITECTURAL ISLAMIC DOORWAY FRAME & WINGS (Mobile Base: 320px+)
    ───────────────────────────────────────────────────────────────────── */
 .door-frame {
   position: relative;
   z-index: 2;
-  width: min(88vw, 600px);
-  height: min(86vh, 740px);
+  width: min(92vw, 420px);
+  height: min(84dvh, 620px);
   display: flex;
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  border-radius: 160px 160px 8px 8px;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(0, 0, 0, 0.5);
+  border-radius: 96px 96px 6px 6px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.5);
   pointer-events: auto;
 }
 
@@ -171,7 +175,7 @@
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   overflow: hidden;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
   will-change: transform, opacity;
   /* Smooth parting transition: moves to sides and rotates slightly */
   transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s, opacity 1.2s ease 0.6s;
@@ -180,48 +184,48 @@
 .door-wing--left {
   left: 0;
   transform-origin: left center;
-  border-radius: 156px 0 0 8px;
+  border-radius: 92px 0 0 6px;
   border-right: 1px solid rgba(197, 160, 89, 0.5);
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.6);
+  box-shadow: 3px 0 12px rgba(0, 0, 0, 0.6);
   transform: translateX(0) rotateY(0deg);
 }
 
 .door-wing--right {
   right: 0;
   transform-origin: right center;
-  border-radius: 0 156px 8px 0;
+  border-radius: 0 92px 6px 0;
   border-left: 1px solid rgba(197, 160, 89, 0.5);
-  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.6);
+  box-shadow: -3px 0 12px rgba(0, 0, 0, 0.6);
   transform: translateX(0) rotateY(0deg);
 }
 
 /* Door Opening Animation: Left panel glides left, Right panel glides right */
 .opening-experience.is-opening .door-wing--left {
-  transform: translateX(-102%) rotateY(-20deg);
+  transform: translateX(-104%) rotateY(-18deg);
   opacity: 0;
 }
 
 .opening-experience.is-opening .door-wing--right {
-  transform: translateX(102%) rotateY(20deg);
+  transform: translateX(104%) rotateY(18deg);
   opacity: 0;
 }
 
 /* Islamic Geometric Arch Inset on Door Panels */
 .door-arch-contour {
   position: absolute;
-  inset: 16px;
-  border: 1px solid rgba(197, 160, 89, 0.35);
+  inset: 12px;
+  border: 1px solid rgba(197, 160, 89, 0.3);
   pointer-events: none;
 }
 
 .door-wing--left .door-arch-contour {
   border-right: none;
-  border-radius: 140px 0 0 4px;
+  border-radius: 80px 0 0 4px;
 }
 
 .door-wing--right .door-arch-contour {
   border-left: none;
-  border-radius: 0 140px 4px 0;
+  border-radius: 0 80px 4px 0;
 }
 
 /* Subtle Lattice Micro-Pattern */
@@ -235,42 +239,42 @@
 
 .door-gold-filigree {
   position: absolute;
-  inset: 24px;
-  border: 1px solid rgba(197, 160, 89, 0.15);
+  inset: 20px;
+  border: 1px solid rgba(197, 160, 89, 0.12);
   pointer-events: none;
 }
 
 .door-wing--left .door-gold-filigree {
   border-right: none;
-  border-radius: 130px 0 0 2px;
+  border-radius: 72px 0 0 2px;
 }
 
 .door-wing--right .door-gold-filigree {
   border-left: none;
-  border-radius: 0 130px 2px 0;
+  border-radius: 0 72px 2px 0;
 }
 
 /* Door Handles */
 .door-handle {
   position: absolute;
   top: 50%;
-  width: 12px;
-  height: 52px;
+  width: 10px;
+  height: 44px;
   background: linear-gradient(180deg, #c5a059 0%, #8b6b23 100%);
-  border-radius: 6px;
+  border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .door-handle--left {
-  right: 6px;
+  right: 5px;
   transform: translateY(-50%);
-  border-radius: 6px 0 0 6px;
+  border-radius: 5px 0 0 5px;
 }
 
 .door-handle--right {
-  left: 6px;
+  left: 5px;
   transform: translateY(-50%);
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 5px 5px 0;
 }
 
 /* ─────────────────────────────────────────────────────────────────────
@@ -279,17 +283,17 @@
 .door-centerpiece {
   position: relative;
   z-index: 10;
-  max-width: 480px;
+  max-width: 340px;
   width: 88%;
   margin-inline: auto;
-  padding: 42px 26px 36px;
-  background: rgba(250, 246, 239, 0.97);
+  padding: 24px 16px 20px;
+  background: rgba(250, 246, 239, 0.98);
   border: 1px solid var(--c-border-wine);
-  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6);
-  border-radius: 120px 120px 8px 8px; /* Islamic Arch Profile */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  border-radius: 80px 80px 6px 6px;
   text-align: center;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
   will-change: opacity, transform;
 }
@@ -297,26 +301,26 @@
 .door-centerpiece::before {
   content: '';
   position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(197, 160, 89, 0.45);
-  border-radius: 112px 112px 4px 4px;
+  inset: 6px;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 74px 74px 4px 4px;
   pointer-events: none;
 }
 
 /* Centerpiece fades away gently without scaling */
 .opening-experience.is-opening .door-centerpiece {
   opacity: 0;
-  transform: translateY(-14px);
+  transform: translateY(-12px);
   pointer-events: none;
 }
 
 /* Arabic Bismillah */
 .door__bismillah {
   font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', Georgia, serif;
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-size: clamp(1.2rem, 5.5vw, 2rem);
   line-height: 1.5;
   color: var(--c-wine);
-  margin-bottom: var(--sp-2);
+  margin-bottom: 2px;
   direction: rtl;
   letter-spacing: 0.02em;
 }
@@ -325,15 +329,15 @@
 .door__translation {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin-bottom: var(--sp-3);
+  gap: 1px;
+  margin-bottom: var(--sp-2);
 }
 
 .door__translation span {
   font-family: var(--font-sans);
-  font-size: clamp(0.52rem, 1.2vw, 0.64rem);
+  font-size: clamp(0.48rem, 1.8vw, 0.62rem);
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-gold-dark);
 }
@@ -343,9 +347,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--sp-3);
-  margin: var(--sp-3) auto var(--sp-4);
-  max-width: 200px;
+  gap: var(--sp-2);
+  margin: var(--sp-2) auto var(--sp-3);
+  max-width: 180px;
 }
 
 .door__divider-line {
@@ -360,60 +364,67 @@
 
 .door__divider-star {
   color: var(--c-gold);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   line-height: 1;
 }
 
 /* Welcoming Title & Subtitle (Zero Spoilers) */
 .door__title {
   font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 3.6vw, 1.8rem);
+  font-size: clamp(1.15rem, 4.5vw, 1.75rem);
   font-weight: 400;
   font-style: italic;
   color: var(--c-text-dark);
-  line-height: 1.3;
-  margin-bottom: var(--sp-2);
-  letter-spacing: 0.02em;
+  line-height: 1.25;
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
 }
 
 .door__subtitle {
   font-family: var(--font-sans);
-  font-size: clamp(0.66rem, 1.3vw, 0.76rem);
+  font-size: clamp(0.6rem, 2.2vw, 0.74rem);
   font-weight: 400;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--c-wine);
-  margin-bottom: var(--sp-6);
+  margin-bottom: var(--sp-4);
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   7. OPEN INVITATION BUTTON (Zero Blue Square, Subtle Gold Focus)
+   7. OPEN INVITATION BUTTON (Zero Blue Square, 44px+ Touch Target)
    ───────────────────────────────────────────────────────────────────── */
 .door__action-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: var(--sp-2);
+  margin-top: 2px;
 }
 
-.door__open-btn {
+#btnOpenInvitation,
+.door__open-btn,
+.door__open-btn * {
   appearance: none;
   -webkit-appearance: none;
   background: transparent !important;
   border: none !important;
-  padding: 8px 24px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
   -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
   outline: none !important;
   box-shadow: none !important;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+.door__open-btn {
+  padding: 8px 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   min-height: 48px;
+  min-width: 48px;
 }
 
 .door__open-btn:focus {
@@ -435,8 +446,8 @@
 
 /* Seal Medallion Icon */
 .door__seal-medallion {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--c-wine) 0%, var(--c-wine-dark) 100%);
   border: 1px solid var(--c-gold);
@@ -444,14 +455,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 18px rgba(92, 17, 30, 0.4), inset 0 1px 2px rgba(238, 217, 170, 0.5);
+  box-shadow: 0 4px 16px rgba(92, 17, 30, 0.4), inset 0 1px 2px rgba(238, 217, 170, 0.5);
   transition: transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
 }
 
 .door__open-btn:hover .door__seal-medallion,
 .door__open-btn:focus-visible .door__seal-medallion {
   transform: scale(1.06) rotate(8deg);
-  box-shadow: 0 6px 24px rgba(197, 160, 89, 0.55), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 22px rgba(197, 160, 89, 0.55), inset 0 1px 3px rgba(255, 255, 255, 0.6);
 }
 
 .door__open-btn:active .door__seal-medallion {
@@ -459,15 +470,15 @@
 }
 
 .door__seal-svg {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
 }
 
 .door__open-text {
   font-family: var(--font-sans);
-  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  font-size: clamp(0.68rem, 2.2vw, 0.8rem);
   font-weight: 500;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--c-wine);
   margin-top: 2px;
@@ -493,7 +504,7 @@
 
 .door__open-sub {
   font-family: var(--font-serif);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-style: italic;
   letter-spacing: 0.08em;
   color: var(--c-text-dark-muted);
@@ -509,7 +520,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: min(92vw, 680px);
+  max-width: min(92vw, 640px);
   width: 90%;
   pointer-events: none;
 }
@@ -517,27 +528,22 @@
 /* 1. Prelude ("In the name of Allah, we begin...") */
 .reveal__prelude {
   font-family: var(--font-serif);
-  font-size: clamp(0.95rem, 2.8vw, 1.3rem);
+  font-size: clamp(0.9rem, 3.2vw, 1.25rem);
   font-style: italic;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--c-champagne);
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-3);
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
   opacity: 0;
-  transform: translateY(18px);
-  filter: blur(4px);
-  -webkit-filter: blur(4px);
+  transform: translateY(16px);
   transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s,
-              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s,
-              filter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s;
-  will-change: opacity, transform, filter;
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s;
+  will-change: opacity, transform;
 }
 
 .opening-experience.is-opening .reveal__prelude {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
-  -webkit-filter: blur(0);
 }
 
 /* 2. Names Container ("SHEHARBAN & MUHAMMED FASIL") */
@@ -545,46 +551,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  margin-bottom: var(--sp-4);
+  gap: 2px;
+  margin-bottom: var(--sp-3);
   opacity: 0;
-  transform: translateY(20px);
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
+  transform: translateY(18px);
   transition: opacity 1.0s cubic-bezier(0.22, 1, 0.36, 1) 2.0s,
-              transform 1.0s cubic-bezier(0.22, 1, 0.36, 1) 2.0s,
-              filter 1.0s cubic-bezier(0.22, 1, 0.36, 1) 2.0s;
-  will-change: opacity, transform, filter;
+              transform 1.0s cubic-bezier(0.22, 1, 0.36, 1) 2.0s;
+  will-change: opacity, transform;
+  width: 100%;
 }
 
 .opening-experience.is-opening .reveal__names-wrap {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
-  -webkit-filter: blur(0);
 }
 
-/* Bride and Groom Names — Fixed, readable, elegant proportion */
+/* Bride and Groom Names — Responsive, readable, never enlarged */
 .reveal__bride,
 .reveal__groom {
   font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 5.2vw, 2.4rem);
+  font-size: clamp(1.3rem, 5.8vw, 2.3rem);
   font-weight: 300;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--c-cream);
-  line-height: 1.25;
+  line-height: 1.2;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.95), 0 0 25px rgba(197, 160, 89, 0.3);
   margin: 0;
   white-space: normal;
   max-width: 100%;
+  text-align: center;
 }
 
 .reveal__amp {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 3.4vw, 1.6rem);
+  font-size: clamp(1rem, 3.2vw, 1.5rem);
   font-style: italic;
   color: var(--c-gold);
-  margin-block: 2px;
+  margin-block: 1px;
 }
 
 /* 3. Date & Time ("25 OCTOBER 2026 • SUNDAY · 11:30 AM") */
@@ -593,15 +596,15 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--sp-2) var(--sp-3);
+  gap: var(--sp-1) var(--sp-2);
   font-family: var(--font-sans);
-  font-size: clamp(0.64rem, 1.8vw, 0.78rem);
-  letter-spacing: 0.22em;
+  font-size: clamp(0.6rem, 1.8vw, 0.76rem);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-gold-lighter);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(14px);
   transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2.8s,
               transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2.8s;
   will-change: opacity, transform;
@@ -617,61 +620,228 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   9. MOBILE OPTIMIZATIONS (375px, 390px, 412px)
+   9. PROGRESSIVE ENHANCEMENT BREAKPOINTS
    ───────────────────────────────────────────────────────────────────── */
-@media (max-width: 480px) {
+
+/* SMALL MOBILE (375px+) */
+@media (min-width: 375px) {
   .door-frame {
-    width: 92vw;
-    height: 88vh;
+    width: min(90vw, 460px);
+    height: min(84dvh, 640px);
+    border-radius: 110px 110px 6px 6px;
+  }
+  .door-wing--left {
+    border-radius: 106px 0 0 6px;
+  }
+  .door-wing--right {
+    border-radius: 0 106px 6px 0;
+  }
+  .door-centerpiece {
+    max-width: 350px;
+    padding: 28px 18px 22px;
+    border-radius: 90px 90px 6px 6px;
+  }
+  .door-centerpiece::before {
+    border-radius: 84px 84px 4px 4px;
+  }
+  .door__seal-medallion {
+    width: 52px;
+    height: 52px;
+  }
+  .door__seal-svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* LARGE MOBILE (412px+) */
+@media (min-width: 412px) {
+  .door-frame {
+    width: min(90vw, 500px);
+    height: min(85dvh, 680px);
     border-radius: 120px 120px 8px 8px;
   }
-
   .door-wing--left {
     border-radius: 116px 0 0 8px;
   }
-
   .door-wing--right {
     border-radius: 0 116px 8px 0;
   }
-
   .door-centerpiece {
-    padding: 28px 16px 22px;
-    border-radius: 96px 96px 6px 6px;
+    max-width: 380px;
+    padding: 32px 20px 24px;
+    border-radius: 100px 100px 8px 8px;
   }
-
   .door-centerpiece::before {
-    border-radius: 90px 90px 4px 4px;
+    border-radius: 92px 92px 6px 6px;
   }
+}
 
-  .door__bismillah {
-    font-size: 1.3rem;
-    margin-bottom: 4px;
+/* TABLET (768px+) */
+@media (min-width: 768px) {
+  .opening-experience {
+    perspective: 1100px;
+    -webkit-perspective: 1100px;
   }
-
-  .door__seal-medallion {
-    width: 50px;
-    height: 50px;
+  .door-frame {
+    width: min(85vw, 580px);
+    height: min(86dvh, 740px);
+    border-radius: 140px 140px 8px 8px;
   }
-
-  .door__seal-svg {
-    width: 26px;
-    height: 26px;
+  .door-wing--left {
+    border-radius: 136px 0 0 8px;
   }
-
-  .reveal__bride,
-  .reveal__groom {
-    font-size: clamp(1.35rem, 5.8vw, 1.85rem);
-    letter-spacing: 0.12em;
+  .door-wing--right {
+    border-radius: 0 136px 8px 0;
   }
+  .opening-experience.is-opening .door-wing--left {
+    transform: translateX(-104%) rotateY(-30deg);
+  }
+  .opening-experience.is-opening .door-wing--right {
+    transform: translateX(104%) rotateY(30deg);
+  }
+  .door-centerpiece {
+    max-width: 440px;
+    padding: 38px 24px 30px;
+    border-radius: 110px 110px 8px 8px;
+  }
+  .door-centerpiece::before {
+    border-radius: 102px 102px 6px 6px;
+  }
+}
 
-  .reveal__date-wrap {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
+/* LAPTOP / DESKTOP (1024px+) */
+@media (min-width: 1024px) {
+  .opening-experience {
+    perspective: 1300px;
+    -webkit-perspective: 1300px;
+  }
+  .door-frame {
+    width: min(80vw, 620px);
+    height: min(86dvh, 760px);
+    border-radius: 160px 160px 8px 8px;
+  }
+  .door-wing--left {
+    border-radius: 156px 0 0 8px;
+  }
+  .door-wing--right {
+    border-radius: 0 156px 8px 0;
+  }
+  .opening-experience.is-opening .door-wing--left {
+    transform: translateX(-104%) rotateY(-45deg);
+  }
+  .opening-experience.is-opening .door-wing--right {
+    transform: translateX(104%) rotateY(45deg);
+  }
+  .door-centerpiece {
+    max-width: 480px;
+    padding: 42px 26px 36px;
+    border-radius: 120px 120px 8px 8px;
+  }
+  .door-centerpiece::before {
+    border-radius: 112px 112px 6px 6px;
+  }
+}
+
+/* WIDE DESKTOP (1280px+) */
+@media (min-width: 1280px) {
+  .door-frame {
+    max-width: 640px;
+    height: min(88dvh, 800px);
+  }
+  .door-centerpiece {
+    max-width: 500px;
+    padding: 46px 28px 40px;
   }
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   10. REDUCED MOTION PREFERENCE
+   10. LANDSCAPE MOBILE / SHORT VIEWPORTS (max-height: 600px)
+   ───────────────────────────────────────────────────────────────────── */
+@media (max-height: 600px) {
+  .door-frame {
+    height: min(92dvh, 360px);
+    width: min(88vw, 460px);
+    border-radius: 40px 40px 4px 4px;
+  }
+  .door-wing--left {
+    border-radius: 38px 0 0 4px;
+  }
+  .door-wing--right {
+    border-radius: 0 38px 4px 0;
+  }
+  .door-centerpiece {
+    padding: 12px 14px 10px;
+    border-radius: 36px 36px 4px 4px;
+  }
+  .door-centerpiece::before {
+    border-radius: 32px 32px 2px 2px;
+  }
+  .door__bismillah {
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+  }
+  .door__translation {
+    margin-bottom: 2px;
+    gap: 0;
+  }
+  .door__translation span {
+    font-size: 0.46rem;
+  }
+  .door__divider {
+    margin: 3px auto 4px;
+  }
+  .door__title {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+  .door__subtitle {
+    font-size: 0.55rem;
+    margin-bottom: 6px;
+  }
+  .door__seal-medallion {
+    width: 36px;
+    height: 36px;
+  }
+  .door__seal-svg {
+    width: 18px;
+    height: 18px;
+  }
+  .door__open-btn {
+    padding: 4px 12px;
+    gap: 4px;
+    min-height: 36px;
+  }
+  .door__open-text {
+    font-size: 0.65rem;
+  }
+  .door__open-sub {
+    font-size: 0.7rem;
+  }
+  .reveal__prelude {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+  .reveal__names-wrap {
+    margin-bottom: 4px;
+    gap: 1px;
+  }
+  .reveal__bride,
+  .reveal__groom {
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+    line-height: 1.1;
+  }
+  .reveal__amp {
+    font-size: 0.95rem;
+    margin-block: 0;
+  }
+  .reveal__date-wrap {
+    font-size: 0.58rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   11. REDUCED MOTION PREFERENCE
    ───────────────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .camera-rig,
@@ -697,8 +867,6 @@
   .portal-reveal .reveal__date-wrap {
     transition-delay: 0.1s !important;
     transition-duration: 0.4s !important;
-    filter: none !important;
-    -webkit-filter: none !important;
   }
 
   .opening-experience {

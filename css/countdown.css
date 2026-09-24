@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════
    countdown.css — Luxury Live Countdown Section
    ═══════════════════════════════════════════════════════════════════════ */
 
@@ -18,10 +18,11 @@
 
 .countdown-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--sp-3);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(6px, 2vw, 16px);
   margin-top: var(--sp-8);
   margin-bottom: var(--sp-10);
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -34,7 +35,7 @@
 .countdown-box {
   background: rgba(26, 20, 16, 0.7);
   border: 1px solid var(--c-border);
-  padding: var(--sp-6) var(--sp-2);
+  padding: clamp(12px, 3vw, 24px) clamp(4px, 1.5vw, 12px);
   border-radius: var(--r-sm);
   display: flex;
   flex-direction: column;
@@ -44,6 +45,8 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: transform var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .countdown-box:hover {
@@ -53,21 +56,20 @@
 
 .countdown-box__num {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 6vw, 3.4rem);
+  font-size: clamp(1.4rem, 7vw, 3rem);
   font-weight: 300;
   color: var(--c-champagne);
   line-height: 1;
   margin-bottom: var(--sp-2);
-  letter-spacing: 0.04em;
-  min-width: 1.5ch;
+  letter-spacing: 0.02em;
   text-align: center;
 }
 
 .countdown-box__label {
   font-family: var(--font-sans);
-  font-size: clamp(0.55rem, 1.4vw, 0.68rem);
+  font-size: clamp(0.5rem, 2.2vw, 0.75rem);
   font-weight: 400;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-gold);
 }

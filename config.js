@@ -1,4 +1,4 @@
-﻿/**
+/**
  * EVENT_CONFIG — Central Configuration
  * Real Wedding Invitation: Sheharban & Muhammed Fasil
  */
@@ -84,6 +84,28 @@ const EVENT_CONFIG = {
       caption: "An Eternal Bond"
     }
   ],
+
+  // Design Tokens & Theming
+  colors: {
+    burgundy: "#5c111e",
+    ivory:    "#faf6ef",
+    gold:     "#c5a059",
+    dark:     "#090506"
+  },
+
+  typography: {
+    serif:  "'Cormorant Garamond', Georgia, serif",
+    arabic: "'Amiri', serif",
+    sans:   "'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif"
+  },
+
+  animation: {
+    duration: 4500,
+    doorRotationDesktop: "45deg",
+    doorRotationTablet:  "30deg",
+    doorRotationMobile:  "18deg",
+    revealDistance: "16px"
+  },
 
   // Footer Credit
   creator: "InshaaAllah · With Blessings & Best Wishes"
