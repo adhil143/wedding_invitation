@@ -55,7 +55,7 @@ const EVENT_CONFIG = {
   },
 
   // Music
-  music: "",
+  music: "assets/music/background.mp3",
 
   // Gallery
   gallery: [

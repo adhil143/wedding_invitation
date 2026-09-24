@@ -67,6 +67,15 @@
       openInvitation();
     });
 
+    var centerpiece = document.getElementById('doorCenterpiece');
+    if (centerpiece) {
+      centerpiece.addEventListener('click', function (e) {
+        if (!isOpening) {
+          openInvitation();
+        }
+      });
+    }
+
     if (btnSkip) {
       btnSkip.addEventListener('click', function (e) {
         e.preventDefault();
