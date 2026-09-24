@@ -1,0 +1,345 @@
+﻿/* ═══════════════════════════════════════════════════════════════════════
+   hero.css — Cinematic Hero Section
+   Islamic Wedding Aesthetic: Dignified Invocations & Gold Accents
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────
+   HERO WRAPPER
+   ───────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--c-bg);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--c-bg);
+  background-image:
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.04);
+  transition: transform 8s ease-out;
+  will-change: transform;
+}
+
+.hero.is-loaded .hero__bg {
+  transform: scale(1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   OVERLAY LAYERS
+   ───────────────────────────────────────────────────────────────────── */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__overlay--base {
+  background: rgba(9, 5, 6, 0.62);
+}
+
+.hero__overlay--vignette {
+  background: radial-gradient(
+    ellipse 90% 80% at 50% 50%,
+    transparent 15%,
+    rgba(6, 3, 4, 0.68) 100%
+  );
+}
+
+.hero__overlay--top {
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 5, 6, 0.8) 0%,
+    rgba(9, 5, 6, 0.25) 20%,
+    transparent 42%
+  );
+}
+
+.hero__overlay--bottom {
+  background: linear-gradient(
+    to top,
+    rgba(9, 5, 6, 0.9) 0%,
+    rgba(9, 5, 6, 0.35) 18%,
+    transparent 38%
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   DECORATIVE CORNER ORNAMENTS
+   ───────────────────────────────────────────────────────────────────── */
+.hero__corner {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-color: var(--c-gold);
+  border-style: solid;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero__corner--tl { top: 22px; left: 22px;  border-width: 1px 0 0 1px; }
+.hero__corner--tr { top: 22px; right: 22px; border-width: 1px 1px 0 0; }
+.hero__corner--bl { bottom: 22px; left: 22px;  border-width: 0 0 1px 1px; }
+.hero__corner--br { bottom: 22px; right: 22px; border-width: 0 1px 1px 0; }
+
+@media (min-width: 768px) {
+  .hero__corner { width: 72px; height: 72px; }
+  .hero__corner--tl { top: 32px; left: 32px; }
+  .hero__corner--tr { top: 32px; right: 32px; }
+  .hero__corner--bl { bottom: 32px; left: 32px; }
+  .hero__corner--br { bottom: 32px; right: 32px; }
+}
+
+@media (min-width: 1280px) {
+  .hero__corner { width: 90px; height: 90px; opacity: 0.4; }
+  .hero__corner--tl { top: 48px; left: 48px; }
+  .hero__corner--tr { top: 48px; right: 48px; }
+  .hero__corner--bl { bottom: 48px; left: 48px; }
+  .hero__corner--br { bottom: 48px; right: 48px; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   HERO CONTENT
+   ───────────────────────────────────────────────────────────────────── */
+.hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 100px var(--sp-6) 80px;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Bismillah Invocations */
+.hero__bismillah {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3.2vw, 1.7rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.16em;
+  color: var(--c-champagne);
+  margin-bottom: var(--sp-2);
+  opacity: 0;
+  animation: heroFadeUp 1s cubic-bezier(0,0,0.2,1) 0.15s both;
+}
+
+.hero__bismillah-sub {
+  font-family: var(--font-sans);
+  font-size: clamp(0.55rem, 1.2vw, 0.65rem);
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  margin-bottom: var(--sp-6);
+  opacity: 0;
+  animation: heroFadeUp 1s cubic-bezier(0,0,0.2,1) 0.3s both;
+}
+
+/* Tagline "Together with our families" */
+.hero__tagline {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--c-gold-lighter);
+  margin-bottom: var(--sp-3);
+  opacity: 0;
+  animation: heroFadeUp 1s cubic-bezier(0,0,0.2,1) 0.45s both;
+}
+
+/* "You're Invited" */
+.hero__invited {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 3.5vw, 1.9rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  color: var(--c-champagne);
+  margin-bottom: var(--sp-4);
+  opacity: 0;
+  animation: heroFadeUp 1s cubic-bezier(0,0,0.2,1) 0.6s both;
+}
+
+/* Ornament divider */
+.hero__ornament {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: var(--sp-4);
+  opacity: 0;
+  animation: heroFade 1.2s cubic-bezier(0,0,0.2,1) 0.75s both;
+}
+.hero__ornament-dash {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-gold));
+}
+.hero__ornament-dash:last-child {
+  background: linear-gradient(90deg, var(--c-gold), transparent);
+}
+.hero__ornament-symbol {
+  color: var(--c-gold);
+  font-size: 0.9rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Couple Names (Great Vibes script) */
+.hero__names {
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 11vw, 6.5rem);
+  font-weight: 400;
+  color: var(--c-cream);
+  line-height: 1.15;
+  margin-bottom: var(--sp-4);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  animation: heroFadeUp 1.1s cubic-bezier(0,0,0.2,1) 0.9s both;
+}
+
+/* Dot separator */
+.hero__ornament-dots {
+  display: flex;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  opacity: 0;
+  animation: heroFade 1s cubic-bezier(0,0,0.2,1) 1.05s both;
+}
+.hero__ornament-dots span {
+  color: var(--c-gold);
+  font-size: 0.55rem;
+  opacity: 0.7;
+}
+
+/* Date & Day/Time */
+.hero__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-3);
+  opacity: 0;
+  animation: heroFadeUp 0.9s cubic-bezier(0,0,0.2,1) 1.2s both;
+}
+.hero__date {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--c-champagne);
+}
+.hero__day-time {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gold-lighter);
+}
+
+/* Venue */
+.hero__venue-text {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 300;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-cream-subtle);
+  margin-bottom: var(--sp-8);
+  opacity: 0;
+  animation: heroFadeUp 0.9s cubic-bezier(0,0,0.2,1) 1.35s both;
+}
+
+/* CTA */
+.hero__cta {
+  opacity: 0;
+  animation: heroFadeUp 0.9s cubic-bezier(0,0,0.2,1) 1.5s both;
+}
+
+.btn--hero {
+  padding: 15px 42px;
+  border-color: rgba(197, 160, 89, 0.65);
+  color: var(--c-champagne);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  background: rgba(9, 5, 6, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background-color var(--dur-base) var(--ease),
+              color            var(--dur-base) var(--ease),
+              border-color     var(--dur-base) var(--ease);
+}
+.btn--hero:hover,
+.btn--hero:focus-visible {
+  background: rgba(197, 160, 89, 0.9);
+  border-color: var(--c-gold);
+  color: var(--c-bg);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   SCROLL INDICATOR
+   ───────────────────────────────────────────────────────────────────── */
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: var(--sp-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  opacity: 0;
+  animation: heroFade 1.2s cubic-bezier(0,0,0.2,1) 2s both;
+}
+
+.hero__scroll-text {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-cream-subtle);
+}
+
+.hero__scroll-track {
+  width: 1px;
+  height: 36px;
+  background: rgba(197, 160, 89, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__scroll-thumb {
+  width: 100%;
+  height: 50%;
+  background: var(--c-gold);
+  animation: scrollDot 2s ease-in-out infinite;
+}
+
+@media (max-width: 480px) {
+  .hero__names { font-size: clamp(2.4rem, 10vw, 3.8rem); }
+  .hero__content { padding-inline: var(--sp-4); }
+}
+
+@media (min-width: 768px) {
+  .hero__content { padding-top: 120px; padding-bottom: 100px; }
+  .hero__ornament { max-width: 360px; }
+}

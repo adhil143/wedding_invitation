@@ -1,0 +1,108 @@
+﻿/* ═══════════════════════════════════════════════════════════════════════
+   music.css — Floating Music Controller & Floating Action Buttons
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Floating FAB group (bottom-right) */
+.fab-container {
+  position: fixed;
+  bottom: var(--sp-6);
+  right: var(--sp-6);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  align-items: center;
+}
+
+.fab-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(17, 12, 8, 0.85);
+  border: 1px solid var(--c-border);
+  color: var(--c-champagne);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform var(--dur-base) var(--ease),
+              background var(--dur-base) var(--ease),
+              border-color var(--dur-base) var(--ease),
+              opacity var(--dur-base) var(--ease);
+}
+
+.fab-btn:hover,
+.fab-btn:focus-visible {
+  transform: scale(1.1);
+  border-color: var(--c-gold);
+  color: var(--c-gold);
+}
+
+/* Scroll-to-top hidden by default, shown when scrolled */
+.fab-btn--scroll-top {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+.fab-btn--scroll-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* WhatsApp FAB */
+.fab-btn--whatsapp {
+  color: #25d366;
+  border-color: rgba(37, 211, 102, 0.3);
+}
+
+.fab-btn--whatsapp:hover {
+  background: #25d366;
+  color: #fff;
+  border-color: #25d366;
+}
+
+/* Music FAB and animated equalizer bars */
+.music-equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+}
+
+.music-equalizer span {
+  display: block;
+  width: 2.5px;
+  background: var(--c-champagne);
+  border-radius: 1px;
+  height: 4px;
+  transition: height 0.2s ease, background 0.2s ease;
+}
+
+.fab-btn--music.is-playing .music-equalizer span {
+  background: var(--c-gold);
+  animation: equalize 1.2s ease-in-out infinite alternate;
+}
+
+.fab-btn--music.is-playing .music-equalizer span:nth-child(1) { animation-delay: 0.1s; height: 12px; }
+.fab-btn--music.is-playing .music-equalizer span:nth-child(2) { animation-delay: 0.3s; height: 16px; }
+.fab-btn--music.is-playing .music-equalizer span:nth-child(3) { animation-delay: 0.2s; height: 8px; }
+
+@keyframes equalize {
+  0%   { height: 3px; }
+  50%  { height: 16px; }
+  100% { height: 6px; }
+}
+
+/* Particle Canvas overlay in Hero */
+#particlesCanvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.65;
+}

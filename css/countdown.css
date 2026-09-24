@@ -1,0 +1,90 @@
+﻿/* ═══════════════════════════════════════════════════════════════════════
+   countdown.css — Luxury Live Countdown Section
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.section--countdown {
+  background: var(--c-bg-soft);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  position: relative;
+  text-align: center;
+  padding-block: var(--sp-20);
+}
+
+.countdown-wrap {
+  max-width: 780px;
+  margin-inline: auto;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-3);
+  margin-top: var(--sp-8);
+  margin-bottom: var(--sp-10);
+}
+
+@media (min-width: 768px) {
+  .countdown-grid {
+    gap: var(--sp-6);
+  }
+}
+
+/* Individual countdown box */
+.countdown-box {
+  background: rgba(26, 20, 16, 0.7);
+  border: 1px solid var(--c-border);
+  padding: var(--sp-6) var(--sp-2);
+  border-radius: var(--r-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
+}
+
+.countdown-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--c-border-bright);
+}
+
+.countdown-box__num {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 6vw, 3.4rem);
+  font-weight: 300;
+  color: var(--c-champagne);
+  line-height: 1;
+  margin-bottom: var(--sp-2);
+  letter-spacing: 0.04em;
+  min-width: 1.5ch;
+  text-align: center;
+}
+
+.countdown-box__label {
+  font-family: var(--font-sans);
+  font-size: clamp(0.55rem, 1.4vw, 0.68rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+}
+
+.countdown-ended {
+  display: none;
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  font-style: italic;
+  color: var(--c-gold);
+  margin-top: var(--sp-6);
+}
+
+.countdown-cta-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}

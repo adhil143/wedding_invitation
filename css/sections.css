@@ -1,0 +1,538 @@
+﻿/* ═══════════════════════════════════════════════════════════════════════
+   sections.css — Save the Date, Details, Welcome, Story, Venue, Footer
+   Islamic Wedding Aesthetic: Ivory Cream, Deep Wine & Antique Gold
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────
+   1. EDITORIAL SAVE THE DATE SECTION (Ivory Cream Foundation)
+   ───────────────────────────────────────────────────────────────────── */
+.section--save-date {
+  background: var(--c-bg-cream);
+  color: var(--c-text-dark);
+  padding-block: var(--sp-24);
+  position: relative;
+}
+
+.save-date-frame {
+  max-width: 580px;
+  margin-inline: auto;
+  padding: var(--sp-12) var(--sp-8);
+  text-align: center;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--c-border-wine);
+  box-shadow: 0 10px 36px rgba(92, 17, 30, 0.06);
+  border-radius: 120px 120px 4px 4px; /* Subtle graceful Islamic arch shape */
+}
+
+.save-date-frame::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-radius: 112px 112px 2px 2px;
+  pointer-events: none;
+}
+
+.save-date__bismillah {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-style: italic;
+  color: var(--c-wine);
+  margin-bottom: var(--sp-2);
+  letter-spacing: 0.1em;
+}
+
+.save-date__bismillah-sub {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gold-dark);
+  margin-bottom: var(--sp-6);
+  display: block;
+}
+
+.save-date__eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--c-wine);
+  margin-bottom: var(--sp-4);
+}
+
+.save-date__day {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-text-dark-muted);
+  margin-bottom: var(--sp-1);
+}
+
+.save-date__number {
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 16vw, 8rem);
+  font-weight: 300;
+  line-height: 0.95;
+  color: var(--c-wine);
+  margin-block: var(--sp-2);
+  letter-spacing: -0.02em;
+}
+
+.save-date__month-year {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3vw, 1.6rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-text-dark);
+  margin-bottom: var(--sp-1);
+}
+
+.save-date__time {
+  font-family: var(--font-sans);
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-gold-dark);
+  margin-bottom: var(--sp-6);
+}
+
+.save-date__divider {
+  width: 44px;
+  height: 1px;
+  background: var(--c-gold);
+  margin: 0 auto var(--sp-4);
+}
+
+.save-date__inshaallah {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-style: italic;
+  color: var(--c-wine);
+  letter-spacing: 0.08em;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   2. WEDDING DETAILS SECTION (Dark Velvet & Gold)
+   ───────────────────────────────────────────────────────────────────── */
+.section--details {
+  background: var(--c-bg-soft);
+  border-top: 1px solid var(--c-border);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-8);
+  }
+}
+
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--sp-10) var(--sp-8);
+  gap: var(--sp-3);
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  transition: background-color var(--dur-base) var(--ease),
+              transform var(--dur-base) var(--ease),
+              border-color var(--dur-base) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-card:hover {
+  background: var(--c-bg-card-hover);
+  border-color: var(--c-border-bright);
+  transform: translateY(-3px);
+}
+
+.detail-card__icon-wrap {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--c-border);
+  border-radius: 50%;
+  color: var(--c-gold);
+  flex-shrink: 0;
+  transition: border-color var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
+  background: rgba(197, 160, 89, 0.05);
+}
+
+.detail-card:hover .detail-card__icon-wrap {
+  border-color: var(--c-gold);
+  color: var(--c-gold-light);
+}
+
+.detail-card__icon-wrap svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.detail-card__label {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+}
+
+.detail-card__value {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: 400;
+  color: var(--c-champagne);
+  line-height: 1.45;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   3. WELCOME / INVITATION MESSAGE SECTION (Warm Ivory Cream)
+   ───────────────────────────────────────────────────────────────────── */
+.section--welcome {
+  background: var(--c-bg-cream);
+  color: var(--c-text-dark);
+  padding-block: var(--sp-24);
+  position: relative;
+}
+
+.welcome {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.welcome__bismillah {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+  font-style: italic;
+  color: var(--c-wine);
+  margin-bottom: var(--sp-1);
+}
+
+.welcome__bismillah-sub {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gold-dark);
+  margin-bottom: var(--sp-8);
+  display: block;
+}
+
+.welcome__lead {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--c-wine);
+  margin-bottom: var(--sp-3);
+}
+
+.welcome__request {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--c-text-dark-muted);
+  line-height: 1.6;
+  margin-bottom: var(--sp-4);
+}
+
+.welcome__ceremony-title {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--c-gold-dark);
+  margin-bottom: var(--sp-6);
+}
+
+.welcome__couple-names {
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  color: var(--c-wine);
+  line-height: 1.15;
+  margin-bottom: var(--sp-6);
+}
+
+.welcome__inshaallah {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-style: italic;
+  color: var(--c-gold-dark);
+  margin-top: var(--sp-4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   4. STORY SECTION
+   ───────────────────────────────────────────────────────────────────── */
+.section--story {
+  background: var(--c-bg-soft);
+  border-top: 1px solid var(--c-border);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-10);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .story-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-16);
+  }
+}
+
+.story-photo-wrap {
+  position: relative;
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+.story-photo-frame {
+  position: relative;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  box-shadow: var(--shadow-dark);
+}
+
+.story-photo-frame img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease);
+}
+
+.story-photo-frame:hover img {
+  transform: scale(1.03);
+}
+
+.story-photo-bracket {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: var(--c-gold);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.story-photo-bracket--tl { top: -10px; left: -10px; border-width: 1px 0 0 1px; }
+.story-photo-bracket--br { bottom: -10px; right: -10px; border-width: 0 1px 1px 0; }
+
+.story-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  text-align: center;
+}
+
+@media (min-width: 860px) {
+  .story-content { text-align: left; }
+}
+
+.story-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  font-style: italic;
+  color: var(--c-champagne);
+  line-height: 1.5;
+}
+
+.story-quote-source {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  margin-top: calc(-1 * var(--sp-2));
+}
+
+.story-body {
+  font-family: var(--font-serif);
+  font-size: var(--fs-base);
+  line-height: 1.8;
+  color: var(--c-text-muted);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   5. VENUE & MAP SECTION
+   ───────────────────────────────────────────────────────────────────── */
+.section--venue {
+  background: var(--c-bg-soft);
+  border-top: 1px solid var(--c-border);
+}
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+@media (min-width: 860px) {
+  .venue-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.venue-info-card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  padding: var(--sp-10) var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-4);
+}
+
+.venue-name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  color: var(--c-champagne);
+}
+
+.venue-address {
+  font-family: var(--font-serif);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  color: var(--c-text-muted);
+}
+
+.venue-buttons {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-top: var(--sp-4);
+}
+
+.venue-map-wrap {
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  min-height: 280px;
+}
+
+.venue-map-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: none;
+  filter: invert(90%) hue-rotate(180deg) contrast(110%);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   6. FOOTER
+   ───────────────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--c-bg);
+  border-top: 1px solid var(--c-border);
+  padding-block: var(--sp-16) var(--sp-12);
+  text-align: center;
+}
+
+.footer__inner {
+  max-width: 540px;
+  margin-inline: auto;
+  padding-inline: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.footer__names {
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: var(--c-gold);
+  line-height: 1.1;
+  margin-bottom: var(--sp-1);
+}
+
+.footer__date {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-cream-subtle);
+}
+
+.footer__divider {
+  width: 40px;
+  height: 1px;
+  background: var(--c-gold);
+  opacity: 0.3;
+  margin-block: var(--sp-2);
+}
+
+.footer__message {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--c-cream-muted);
+  line-height: 1.6;
+}
+
+.footer__contact {
+  display: flex;
+  gap: var(--sp-6);
+  align-items: center;
+  margin-top: var(--sp-2);
+}
+
+.footer__contact-link {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  color: var(--c-cream-subtle);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.footer__contact-link:hover,
+.footer__contact-link:focus-visible {
+  color: var(--c-gold);
+}
+
+.footer__credit {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--c-gold);
+  opacity: 0.8;
+  margin-top: var(--sp-6);
+}

@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090506" />
+
+  <!-- SEO -->
+  <title>Sheharban &amp; Muhammed Fasil &mdash; Wedding Invitation</title>
+  <meta name="description" content="Together with our families, we request the honor of your presence at the wedding ceremony of Sheharban &amp; Muhammed Fasil on Sunday, 25 October 2026." />
+  <meta name="robots" content="noindex" />
+
+  <!-- Open Graph (WhatsApp / Social preview) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Sheharban &amp; Muhammed Fasil &mdash; Wedding Invitation" />
+  <meta property="og:description" content="Together with our families, we request the honor of your presence at the wedding ceremony of Sheharban &amp; Muhammed Fasil on Sunday, 25 October 2026." />
+  <meta property="og:image"       content="assets/images/og-image.jpg" />
+  <meta property="og:url"         content="" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Sheharban &amp; Muhammed Fasil &mdash; Wedding Invitation" />
+  <meta name="twitter:description" content="Together with our families, we request the honor of your presence at the wedding ceremony of Sheharban &amp; Muhammed Fasil." />
+  <meta name="twitter:image"       content="assets/images/og-image.jpg" />
+
+  <!-- Google Fonts: Cormorant Garamond, Great Vibes, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/countdown.css" />
+  <link rel="stylesheet" href="css/gallery.css" />
+  <link rel="stylesheet" href="css/music.css" />
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ════════════════════════════════════════════════════════════════════ -->
+<header class="nav nav--transparent" id="nav" role="banner">
+  <div class="nav__inner">
+
+    <!-- Brand Monogram -->
+    <a href="#hero" class="nav__logo" aria-label="Back to top">
+      <span class="nav__logo-text">S <span class="nav__logo-amp">&amp;</span> M</span>
+    </a>
+
+    <!-- Desktop Navigation (Clean Save-the-Date Navigation, No RSVP) -->
+    <nav class="nav__links" role="navigation" aria-label="Main navigation">
+      <a href="#hero"           class="nav__link">Home</a>
+      <a href="#save-the-date"  class="nav__link">Save The Date</a>
+      <a href="#details"        class="nav__link">Details</a>
+      <a href="#countdown"      class="nav__link">Countdown</a>
+      <a href="#gallery"        class="nav__link">Gallery</a>
+      <a href="#venue"          class="nav__link">Venue</a>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button
+      class="nav__hamburger"
+      id="navHamburger"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="navMobile"
+    >
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+
+  </div><!-- /.nav__inner -->
+
+  <!-- Mobile Fullscreen Overlay -->
+  <div class="nav__mobile" id="navMobile" aria-hidden="true" role="dialog" aria-label="Navigation">
+    <nav class="nav__mobile-links" aria-label="Mobile navigation">
+      <a href="#hero"          class="nav__mobile-link" data-close-nav>Home</a>
+      <a href="#save-the-date" class="nav__mobile-link" data-close-nav>Save The Date</a>
+      <a href="#details"       class="nav__mobile-link" data-close-nav>Details</a>
+      <a href="#countdown"     class="nav__mobile-link" data-close-nav>Countdown</a>
+      <a href="#story"         class="nav__mobile-link" data-close-nav>Our Story</a>
+      <a href="#gallery"       class="nav__mobile-link" data-close-nav>Gallery</a>
+      <a href="#venue"         class="nav__mobile-link" data-close-nav>Venue</a>
+    </nav>
+    <p class="nav__mobile-names">Sheharban &amp; Muhammed Fasil</p>
+    <p class="nav__mobile-date">25 October 2026</p>
+  </div>
+
+</header><!-- /.nav -->
+
+
+<main id="main-content">
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     HERO — Cinematic Opening Screen
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero" aria-labelledby="heroHeading">
+
+  <!-- Background image -->
+  <div class="hero__bg" id="heroBg" role="img" aria-label="Cinematic Islamic wedding background"></div>
+
+  <!-- Floating golden petals canvas -->
+  <canvas id="particlesCanvas" aria-hidden="true"></canvas>
+
+  <!-- Overlay layers for depth & legibility -->
+  <div class="hero__overlay hero__overlay--base"    aria-hidden="true"></div>
+  <div class="hero__overlay hero__overlay--vignette" aria-hidden="true"></div>
+  <div class="hero__overlay hero__overlay--top"     aria-hidden="true"></div>
+  <div class="hero__overlay hero__overlay--bottom"  aria-hidden="true"></div>
+
+  <!-- Geometric gold corner ornaments -->
+  <div class="hero__corner hero__corner--tl" aria-hidden="true"></div>
+  <div class="hero__corner hero__corner--tr" aria-hidden="true"></div>
+  <div class="hero__corner hero__corner--bl" aria-hidden="true"></div>
+  <div class="hero__corner hero__corner--br" aria-hidden="true"></div>
+
+  <!-- Centered hero typography -->
+  <div class="hero__content">
+
+    <!-- Respectful Bismillah -->
+    <p class="hero__bismillah" id="heroBismillah">Bismillah</p>
+    <p class="hero__bismillah-sub" id="heroBismillahSub">
+      IN THE NAME OF ALLAH &bull; THE MOST GRACIOUS &amp; THE MOST MERCIFUL
+    </p>
+
+    <!-- Tagline -->
+    <p class="hero__tagline" id="heroTagline">
+      &mdash; TOGETHER WITH OUR FAMILIES &mdash;
+    </p>
+
+    <!-- You're Invited -->
+    <p class="hero__invited" id="heroHeading">You&rsquo;re Invited</p>
+
+    <!-- Gold ornament divider -->
+    <div class="hero__ornament" aria-hidden="true">
+      <span class="hero__ornament-dash"></span>
+      <span class="hero__ornament-symbol">&#10057;</span>
+      <span class="hero__ornament-dash"></span>
+    </div>
+
+    <!-- Couple Names -->
+    <h1 class="hero__names" id="heroNames">Sheharban &amp; Muhammed Fasil</h1>
+
+    <!-- Dot separator -->
+    <div class="hero__ornament-dots" aria-hidden="true">
+      <span>&#8226;</span>
+      <span>&#8226;</span>
+      <span>&#8226;</span>
+    </div>
+
+    <!-- Date & Day/Time -->
+    <div class="hero__meta">
+      <time class="hero__date" id="heroDate" datetime="2026-10-25">25 October 2026</time>
+      <span class="hero__day-time" id="heroDayTime">Sunday &bull; 11:30 AM</span>
+    </div>
+
+    <!-- Venue -->
+    <address class="hero__venue-text" id="heroVenue">
+      Delight Convention Center &bull; Vazhikkadavu, Puvathipoyil
+    </address>
+
+    <!-- CTA -->
+    <div class="hero__cta">
+      <a href="#save-the-date" class="btn btn--outline btn--hero" aria-label="Open wedding invitation">
+        Open Invitation
+      </a>
+    </div>
+
+  </div><!-- /.hero__content -->
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll-indicator" aria-hidden="true">
+    <span class="hero__scroll-text">Scroll</span>
+    <div class="hero__scroll-track">
+      <div class="hero__scroll-thumb"></div>
+    </div>
+  </div>
+
+</section><!-- /#hero -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     DEDICATED SAVE THE DATE — Editorial Arch Composition
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="section section--save-date" id="save-the-date" aria-labelledby="stdHeading">
+  <div class="container">
+
+    <div class="save-date-frame sr">
+
+      <!-- Bismillah invocation -->
+      <p class="save-date__bismillah" id="stdBismillah">Bismillah</p>
+      <span class="save-date__bismillah-sub" id="stdBismillahSub">
+        IN THE NAME OF ALLAH &bull; THE MOST GRACIOUS &amp; THE MOST MERCIFUL
+      </span>
+
+      <div class="section__divider" style="margin: 0 auto var(--sp-6);" aria-hidden="true"></div>
+
+      <!-- Save The Date Eyebrow -->
+      <h2 class="save-date__eyebrow" id="stdHeading">Save The Date</h2>
+
+      <!-- Day -->
+      <p class="save-date__day" id="stdDay">Sunday</p>
+
+      <!-- Date Number (Editorial Regal Serif) -->
+      <p class="save-date__number" id="stdNumber" aria-label="25th">25</p>
+
+      <!-- Month & Year -->
+      <p class="save-date__month-year" id="stdMonthYear">October 2026</p>
+
+      <!-- Time -->
+      <p class="save-date__time" id="stdTime">11:30 AM</p>
+
+      <div class="save-date__divider" aria-hidden="true"></div>
+
+      <!-- InshaaAllah Blessing -->
+      <p class="save-date__inshaallah" id="stdInshaallah">InshaaAllah</p>
+
+    </div><!-- /.save-date-frame -->
+
+  </div><!-- /.container -->
+</section><!-- /#save-the-date -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     WEDDING DETAILS — Single Event (Ceremony Only)
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="section section--details" id="details" aria-labelledby="detailsHeading">
+  <div class="container">
+
+    <header class="section__header sr">
+      <p class="section__eyebrow">Sacred Nuptials</p>
+      <h2 class="section__title" id="detailsHeading">Wedding Details</h2>
+      <div class="section__divider" aria-hidden="true"></div>
+    </header>
+
+    <div class="details-grid">
+
+      <!-- Card 1: Auspicious Date & Time -->
+      <div class="detail-card sr sr-d1">
+        <div class="detail-card__icon-wrap" aria-hidden="true">
+          <!-- Elegant SVG Calendar Icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/>
+          </svg>
+        </div>
+        <p class="detail-card__label">Date &amp; Time</p>
+        <p class="detail-card__value">
+          <span id="detailDate">25 October 2026</span><br>
+          <span style="font-size:0.9em;color:var(--c-gold);letter-spacing:0.08em;" id="detailDay">Sunday</span> &bull;
+          <span style="font-size:0.9em;color:var(--c-gold);" id="detailTime">11:30 AM</span>
+        </p>
+      </div>
+
+      <!-- Card 2: Sacred Venue & Location -->
+      <div class="detail-card sr sr-d2">
+        <div class="detail-card__icon-wrap" aria-hidden="true">
+          <!-- Elegant SVG Location Pin Icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+        <p class="detail-card__label">Venue &amp; Location</p>
+        <p class="detail-card__value">
+          <span id="detailVenue">Delight Convention Center</span><br>
+          <span style="font-size:0.85em;color:var(--c-cream-muted);" id="detailLocation">Vazhikkadavu, Puvathipoyil</span>
+        </p>
+      </div>
+
+    </div><!-- /.details-grid -->
+
+    <!-- Add to Google Calendar Button -->
+    <div class="text-center sr sr-d3" style="margin-top: var(--sp-10);">
+      <a href="#" class="btn btn--outline btn--calendar" aria-label="Add wedding to Google Calendar">
+        &#128197; Add to Google Calendar
+      </a>
+    </div>
+
+  </div><!-- /.container -->
+</section><!-- /#details -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     LIVE COUNTDOWN
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="section section--countdown" id="countdown" aria-labelledby="countdownHeading">
+  <div class="container">
+    <div class="countdown-wrap sr">
+
+      <p class="section__eyebrow">The Celebration Begins In</p>
+      <h2 class="section__title" id="countdownHeading">Counting Every Moment</h2>
+      <div class="section__divider" aria-hidden="true"></div>
+
+      <div class="countdown-grid" id="cdGrid" role="timer" aria-live="polite">
+        <div class="countdown-box">
+          <span class="countdown-box__num" id="cdDays">00</span>
+          <span class="countdown-box__label">Days</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-box__num" id="cdHours">00</span>
+          <span class="countdown-box__label">Hours</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-box__num" id="cdMins">00</span>
+          <span class="countdown-box__label">Minutes</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-box__num" id="cdSecs">00</span>
+          <span class="countdown-box__label">Seconds</span>
+        </div>
+      </div>
+
+      <p class="countdown-ended" id="cdEnded">The wedding celebrations have begun! InshaaAllah</p>
+
+    </div><!-- /.countdown-wrap -->
+  </div><!-- /.container -->
+</section><!-- /#countdown -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     WELCOME / INVITATION MESSAGE — Reverent & Respectful
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="section section--welcome" id="welcome" aria-labelledby="welcomeHeading">
+  <div class="container container--narrow">
+
+    <div class="welcome sr">
+
+      <!-- Bismillah -->
+      <p class="welcome__bismillah" id="welcomeBismillah">Bismillah</p>
+      <span class="welcome__bismillah-sub" id="welcomeBismillahSub">
+        IN THE NAME OF ALLAH &bull; THE MOST GRACIOUS &amp; THE MOST MERCIFUL
+      </span>
+
+      <!-- Together with our families -->
+      <p class="welcome__lead" id="welcomeLead">TOGETHER WITH OUR FAMILIES</p>
+
+      <!-- Request text -->
+      <p class="welcome__request" id="welcomeRequest">
+        WE REQUEST THE HONOR OF YOUR PRESENCE AT THE WEDDING CEREMONY OF
+      </p>
+
+      <div class="section__divider" style="margin: var(--sp-4) auto var(--sp-6);" aria-hidden="true"></div>
+
+      <!-- Couple Names in Calligraphy -->
+      <h2 class="welcome__couple-names" id="welcomeNames">
+        Sheharban &amp; Muhammed Fasil
+      </h2>
+
+      <!-- InshaaAllah -->
+      <p class="welcome__inshaallah" id="welcomeInshaallah">
+        InshaaAllah
+      </p>
+
+    </div><!-- /.welcome -->
+
+  </div><!-- /.container -->
+</section><!-- /#welcome -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     COUPLE / STORY SECTION
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="section section--story" id="story" aria-labelledby="storyHeading">
+  <div class="container">
+
+    <header class="section__header sr">
+      <p class="section__eyebrow" id="storyEyebrow">A Sacred Beginning</p>
+      <h2 class="section__title" id="storyTitle">Written in the Stars</h2>
+      <div class="section__divider" aria-hidden="true"></div>
+    </header>
+
+    <div class="story-grid">
+
+      <!-- Couple Photo with Gold Corner Brackets -->
+      <div class="story-photo-wrap sr sr-left">
+        <div class="story-photo-bracket story-photo-bracket--tl" aria-hidden="true"></div>
+        <div class="story-photo-bracket story-photo-bracket--br" aria-hidden="true"></div>
+        <div class="story-photo-frame">
+          <img id="storyPhoto" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=80" alt="Sheharban and Muhammed Fasil" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Story Narrative -->
+      <div class="story-content sr sr-right">
+        <blockquote class="story-quote" id="storyQuote">
+          &ldquo;And We created you in pairs.&rdquo;
+        </blockquote>
+        <p class="story-quote-source" id="storyQuoteSource">Surah An-Naba [78:8]</p>
+        <div class="section__divider" style="margin: var(--sp-2) 0 var(--sp-4);" aria-hidden="true"></div>
+        <p class="story-body" id="storyBody">
+          With hearts full of gratitude to the Almighty, and blessed by the prayers and love of our beloved parents and families, we embark on this sacred journey of marriage together. We look forward to celebrating this auspicious day with you.
+        </p>
+      </div>
+
+    </div><!-- /.story-grid -->
+
+  </div><!-- /.container -->
+</section><!-- /#story -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     PHOTO GALLERY
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="section section--gallery" id="gallery" aria-labelledby="galleryHeading">
+  <div class="container">
+
+    <header class="section__header sr">
+      <p class="section__eyebrow">Cherished Moments</p>
+      <h2 class="section__title" id="galleryHeading">Captured Memories</h2>
+      <div class="section__divider" aria-hidden="true"></div>
+    </header>
+
+    <!-- Populated by js/gallery.js from EVENT_CONFIG.gallery -->
+    <div class="gallery-grid" id="galleryGrid"></div>
+
+  </div><!-- /.container -->
+</section><!-- /#gallery -->
+
+<!-- Fullscreen Lightbox Modal -->
+<div class="lightbox" id="lightbox" role="dialog" aria-hidden="true" aria-label="Photo Lightbox">
+  <div class="lightbox__inner">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox__nav-btn lightbox__nav-btn--prev" id="lightboxPrev" aria-label="Previous photo">&#10094;</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="Enlarged photo" />
+    <p class="lightbox__caption" id="lightboxCaption"></p>
+    <button class="lightbox__nav-btn lightbox__nav-btn--next" id="lightboxNext" aria-label="Next photo">&#10095;</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     VENUE & MAP
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="section section--venue" id="venue" aria-labelledby="venueHeading">
+  <div class="container">
+
+    <header class="section__header sr">
+      <p class="section__eyebrow">Location &amp; Directions</p>
+      <h2 class="section__title" id="venueHeading">The Venue</h2>
+      <div class="section__divider" aria-hidden="true"></div>
+    </header>
+
+    <div class="venue-grid sr">
+
+      <!-- Venue Address & Actions -->
+      <div class="venue-info-card">
+        <h3 class="venue-name" id="venueName">Delight Convention Center</h3>
+        <p class="venue-address" id="venueAddress">Vazhikkadavu, Puvathipoyil</p>
+        
+        <div class="venue-buttons">
+          <a id="venueMapBtn" href="#" target="_blank" rel="noopener" class="btn btn--gold">
+            &#128205; Open in Google Maps
+          </a>
+          <a id="venueDirectionsBtn" href="#" target="_blank" rel="noopener" class="btn btn--outline">
+            Get Directions &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Map Embed Preview -->
+      <div class="venue-map-wrap">
+        <iframe
+          id="venueMapIframe"
+          class="venue-map-iframe"
+          title="Wedding Venue Map"
+          loading="lazy"
+          src="https://maps.google.com/maps?q=Delight+Convention+Center+Vazhikkadavu+Puvathipoyil&output=embed"
+        ></iframe>
+      </div>
+
+    </div><!-- /.venue-grid -->
+
+  </div><!-- /.container -->
+</section><!-- /#venue -->
+
+</main><!-- /#main-content -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+
+    <p class="footer__names" id="footerNames">Sheharban &amp; Muhammed Fasil</p>
+    <p class="footer__date"  id="footerDate">25 October 2026 &bull; Sunday</p>
+    <div class="footer__divider" aria-hidden="true"></div>
+
+    <p class="footer__message">Thank you for your warm prayers and blessings.</p>
+
+    <!-- Contact links (Phone & WhatsApp only, NO email) -->
+    <div class="footer__contact" role="list">
+      <a id="whatsappLink" href="https://wa.me/919605036644"
+         class="footer__contact-link" role="listitem"
+         aria-label="Contact on WhatsApp" target="_blank" rel="noopener">
+        &#128172; WhatsApp
+      </a>
+      <a id="phoneLink" href="tel:+919605036644"
+         class="footer__contact-link" role="listitem"
+         aria-label="Call for inquiries">
+        &#128222; <span id="phoneText">+91 96050 36644</span>
+      </a>
+    </div>
+
+    <p class="footer__credit" id="footerCredit">InshaaAllah &bull; With Blessings &amp; Best Wishes</p>
+
+  </div><!-- /.footer__inner -->
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FLOATING ACTION BUTTONS (FAB)
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="fab-container" aria-label="Quick Actions">
+
+  <!-- Music toggle FAB (optional) -->
+  <button class="fab-btn fab-btn--music" id="fabMusic" aria-label="Toggle background audio" title="Toggle Audio">
+    <div class="music-equalizer" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- WhatsApp quick chat FAB -->
+  <a class="fab-btn fab-btn--whatsapp" id="fabWhatsapp" href="https://wa.me/919605036644" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="WhatsApp">
+    &#128172;
+  </a>
+
+  <!-- Scroll-to-top FAB -->
+  <button class="fab-btn fab-btn--scroll-top" id="fabScrollTop" aria-label="Scroll to top" title="Scroll to top">
+    &#8593;
+  </button>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     SCRIPTS
+     ════════════════════════════════════════════════════════════════════ -->
+<script src="config.js"></script>
+<script src="js/scroll-reveal.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/config-loader.js"></script>
+<script src="js/countdown.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/music.js"></script>
+<script src="js/fab.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
