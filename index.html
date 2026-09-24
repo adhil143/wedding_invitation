@@ -23,11 +23,11 @@
   <meta name="twitter:description" content="Together with our families, we request the honor of your presence at the wedding ceremony of Sheharban &amp; Muhammed Fasil." />
   <meta name="twitter:image"       content="assets/images/og-image.jpg" />
 
-  <!-- Google Fonts: Cormorant Garamond, Great Vibes, Montserrat -->
+  <!-- Google Fonts: Amiri (Arabic), Cormorant Garamond, Great Vibes, Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
     rel="stylesheet"
   />
 
@@ -40,12 +40,124 @@
   <link rel="stylesheet" href="css/countdown.css" />
   <link rel="stylesheet" href="css/gallery.css" />
   <link rel="stylesheet" href="css/music.css" />
+  <link rel="stylesheet" href="css/invitation-cover.css" />
 </head>
 
 <body>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     NAVIGATION
+     MYSTERIOUS ISLAMIC INVITATION ENTRY COVER (No Information Spoilers)
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="invitation-overlay" id="invitationOverlay" aria-modal="true" role="dialog" aria-label="Wedding Invitation Cover">
+
+  <!-- Subtle Skip Button (Top Right) -->
+  <button class="invitation-skip-btn" id="invitationSkipBtn" aria-label="Skip to wedding details">
+    Skip &rarr;
+  </button>
+
+  <!-- 3D Gatefold Stage -->
+  <div class="invitation-stage" id="invitationStage">
+
+    <!-- FRONT COVER (Visible First: No names, no dates, no venue) -->
+    <div class="invitation-cover" id="invitationCover">
+
+      <!-- Left & Right Islamic Arched Doors / Gatefold Panels -->
+      <div class="cover-panel cover-panel--left" aria-hidden="true">
+        <div class="cover-panel__inner">
+          <div class="cover-pattern"></div>
+        </div>
+      </div>
+
+      <div class="cover-panel cover-panel--right" aria-hidden="true">
+        <div class="cover-panel__inner">
+          <div class="cover-pattern"></div>
+        </div>
+      </div>
+
+      <!-- Center Card Content on Cover -->
+      <div class="cover-content" id="coverContent">
+
+        <!-- Arabic Bismillah Calligraphy -->
+        <p class="cover__arabic-bismillah" lang="ar" dir="rtl">
+          بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+        </p>
+
+        <!-- English Translation -->
+        <div class="cover__translation">
+          <span>IN THE NAME OF ALLAH</span>
+          <span>THE MOST GRACIOUS, THE MOST MERCIFUL</span>
+        </div>
+
+        <div class="cover__divider-ornament" aria-hidden="true">
+          <span class="cover__divider-line"></span>
+          <span class="cover__divider-symbol">&#10057;</span>
+          <span class="cover__divider-line"></span>
+        </div>
+
+        <!-- Refined Welcome Statement -->
+        <h1 class="cover__welcome-title">A Beautiful Beginning Awaits</h1>
+        <p class="cover__welcome-sub">With the blessings of Allah</p>
+
+        <!-- Interactive Wax Seal / Open Button -->
+        <div class="cover__action-wrap">
+          <button class="cover__open-btn" id="btnOpenInvitation" aria-label="Open wedding invitation">
+            <span class="cover__open-btn-seal" aria-hidden="true">
+              <svg viewBox="0 0 40 40" class="cover__seal-svg">
+                <!-- Islamic 8-point geometric star (Rub el Hizb) -->
+                <polygon points="20,2 24,14 36,10 29,20 38,27 26,29 24,40 18,30 6,36 10,24 2,20 12,14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="20" cy="20" r="4" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="cover__open-btn-text">OPEN INVITATION</span>
+            <span class="cover__open-btn-sub">Tap to enter</span>
+          </button>
+        </div>
+
+      </div><!-- /.cover-content -->
+
+    </div><!-- /.invitation-cover -->
+
+    <!-- INNER REVEAL STAGE (Appears When Cover Unfolds) -->
+    <div class="invitation-reveal" id="invitationReveal" aria-live="polite">
+
+      <!-- Golden Radiant Backlight -->
+      <div class="reveal-backlight" aria-hidden="true"></div>
+
+      <div class="reveal-content">
+
+        <!-- Step 1: Sacred Prelude -->
+        <p class="reveal__prelude" id="revealPrelude">In the name of Allah, we begin...</p>
+        <p class="reveal__chapter" id="revealChapter">A beautiful new chapter</p>
+
+        <div class="reveal__divider" aria-hidden="true"></div>
+
+        <!-- Step 2: Emotional Name Reveal -->
+        <div class="reveal__names-wrap">
+          <h2 class="reveal__name reveal__name--bride" id="revealBride">SHEHARBAN</h2>
+          <span class="reveal__amp" id="revealAmp">&amp;</span>
+          <h2 class="reveal__name reveal__name--groom" id="revealGroom">MUHAMMED FASIL</h2>
+        </div>
+
+        <!-- Step 3: Secondary Reveal (Date, Day, Time & Venue) -->
+        <div class="reveal__details" id="revealDetails">
+          <p class="reveal__date">25 OCTOBER 2026</p>
+          <p class="reveal__day-time">SUNDAY &bull; 11:30 AM</p>
+          <div class="reveal__small-divider" aria-hidden="true"></div>
+          <p class="reveal__venue">DELIGHT CONVENTION CENTER</p>
+          <p class="reveal__location">VAZHIKKADAVU, PUVATHIPOYIL</p>
+        </div>
+
+      </div><!-- /.reveal-content -->
+
+    </div><!-- /.invitation-reveal -->
+
+  </div><!-- /.invitation-stage -->
+
+</div><!-- /.invitation-overlay -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     NAVIGATION (Main Website)
      ════════════════════════════════════════════════════════════════════ -->
 <header class="nav nav--transparent" id="nav" role="banner">
   <div class="nav__inner">
@@ -55,7 +167,7 @@
       <span class="nav__logo-text">S <span class="nav__logo-amp">&amp;</span> M</span>
     </a>
 
-    <!-- Desktop Navigation (Clean Save-the-Date Navigation, No RSVP) -->
+    <!-- Desktop Navigation -->
     <nav class="nav__links" role="navigation" aria-label="Main navigation">
       <a href="#hero"           class="nav__link">Home</a>
       <a href="#save-the-date"  class="nav__link">Save The Date</a>
@@ -454,7 +566,7 @@
       <div class="venue-info-card">
         <h3 class="venue-name" id="venueName">Delight Convention Center</h3>
         <p class="venue-address" id="venueAddress">Vazhikkadavu, Puvathipoyil</p>
-        
+
         <div class="venue-buttons">
           <a id="venueMapBtn" href="#" target="_blank" rel="noopener" class="btn btn--gold">
             &#128205; Open in Google Maps
@@ -521,13 +633,11 @@
      ════════════════════════════════════════════════════════════════════ -->
 <div class="fab-container" aria-label="Quick Actions">
 
-  <!-- Music toggle FAB (optional) -->
-  <button class="fab-btn fab-btn--music" id="fabMusic" aria-label="Toggle background audio" title="Toggle Audio">
-    <div class="music-equalizer" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+  <!-- Music toggle FAB (SVG Icons, no emojis) -->
+  <button class="fab-btn fab-btn--music" id="fabMusic" aria-label="Play background music" title="Play Music">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+      <polygon points="6 4 20 12 6 20 6 4"/>
+    </svg>
   </button>
 
   <!-- WhatsApp quick chat FAB -->
@@ -556,6 +666,7 @@
 <script src="js/particles.js"></script>
 <script src="js/music.js"></script>
 <script src="js/fab.js"></script>
+<script src="js/invitation-cover.js"></script>
 <script src="js/main.js"></script>
 
 </body>
