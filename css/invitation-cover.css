@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════════════
    invitation-cover.css
-   Single-Page Cinematic 3D Islamic Portal Entry & Continuous Camera Transition
+   Single-Page Architectural Islamic Doorway Opening Experience
+   (NO zoom, NO scaling text, stable readable reveal, smooth dissolution)
    ═══════════════════════════════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────────────────────────────────────
@@ -36,9 +37,9 @@
   transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.8s;
 }
 
-/* Seamless Dissolution into the Wedding Website (starts at 2.3s, complete by 3.2s) */
+/* Soft dissolution into the wedding website (starts at 3.7s, complete by 4.5s) */
 .opening-experience.is-opening {
-  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2.3s, visibility 0.9s 2.3s;
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 3.7s, visibility 0.8s 3.7s;
   opacity: 0;
   pointer-events: none;
 }
@@ -48,6 +49,13 @@
   visibility: hidden !important;
   pointer-events: none !important;
   display: none !important;
+}
+
+/* Ensure the main wedding site underneath is NEVER scaled or zoomed */
+#wedding-site {
+  transform: none !important;
+  scale: 1 !important;
+  will-change: auto;
 }
 
 /* ─────────────────────────────────────────────────────────────────────
@@ -92,7 +100,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   3. 3D CAMERA RIG (Smooth Push-In through doorway)
+   3. STABLE CAMERA RIG (NO LARGE ZOOM / SCALE)
    ───────────────────────────────────────────────────────────────────── */
 .camera-rig {
   position: relative;
@@ -103,47 +111,45 @@
   justify-content: center;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transform: scale(1) translateZ(0);
-  transition: transform 1.7s cubic-bezier(0.22, 1, 0.36, 1) 1.1s;
+  transform: none;
+  /* Very subtle spatial breathing only (max 1.02, NO zoom) */
+  transition: transform 2.0s cubic-bezier(0.22, 1, 0.36, 1) 1.2s;
   will-change: transform;
 }
 
-/* Camera glides forward smoothly once doors are open */
 .opening-experience.is-opening .camera-rig {
-  transform: scale(1.4) translateZ(260px);
+  transform: scale(1.02);
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   4. WARM PORTAL LIGHT (Behind the opening doors)
+   4. CENTER WARM LIGHT (Gently appears behind opening doors)
    ───────────────────────────────────────────────────────────────────── */
 .portal-light {
   position: absolute;
-  width: 520px;
-  height: 520px;
+  width: min(85vw, 560px);
+  height: min(85vw, 560px);
   border-radius: 50%;
-  background: radial-gradient(circle at center, rgba(240, 222, 180, 0.7) 0%, rgba(197, 160, 89, 0.35) 35%, rgba(92, 17, 30, 0.15) 60%, transparent 80%);
+  background: radial-gradient(circle at center, rgba(240, 222, 180, 0.45) 0%, rgba(197, 160, 89, 0.22) 40%, rgba(92, 17, 30, 0.08) 65%, transparent 80%);
   filter: blur(40px);
   -webkit-filter: blur(40px);
   opacity: 0;
-  transform: scale(0.5);
-  transition: opacity 1.0s cubic-bezier(0.22, 1, 0.36, 1) 0.6s, transform 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.6s;
+  transition: opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.6s;
   pointer-events: none;
   z-index: 1;
 }
 
 .opening-experience.is-opening .portal-light {
-  opacity: 1;
-  transform: scale(2.1);
+  opacity: 0.9;
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   5. ARCHITECTURAL DOORWAY FRAME & WINGS
+   5. ARCHITECTURAL ISLAMIC DOORWAY FRAME & WINGS
    ───────────────────────────────────────────────────────────────────── */
 .door-frame {
   position: relative;
   z-index: 2;
-  width: min(88vw, 620px);
-  height: min(86vh, 760px);
+  width: min(88vw, 600px);
+  height: min(86vh, 740px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,9 +157,10 @@
   -webkit-transform-style: preserve-3d;
   border-radius: 160px 160px 8px 8px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
 }
 
-/* Left & Right Door Wings */
+/* Left & Right Door Panels */
 .door-wing {
   position: absolute;
   top: 0;
@@ -163,10 +170,11 @@
   background: radial-gradient(ellipse at 50% 30%, #20080e 0%, #100407 100%);
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transition: transform 1.35s cubic-bezier(0.25, 1, 0.35, 1) 0.35s, opacity 1.1s ease 0.8s;
   overflow: hidden;
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
-  will-change: transform;
+  will-change: transform, opacity;
+  /* Smooth parting transition: moves to sides and rotates slightly */
+  transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s, opacity 1.2s ease 0.6s;
 }
 
 .door-wing--left {
@@ -175,6 +183,7 @@
   border-radius: 156px 0 0 8px;
   border-right: 1px solid rgba(197, 160, 89, 0.5);
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.6);
+  transform: translateX(0) rotateY(0deg);
 }
 
 .door-wing--right {
@@ -183,6 +192,18 @@
   border-radius: 0 156px 8px 0;
   border-left: 1px solid rgba(197, 160, 89, 0.5);
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.6);
+  transform: translateX(0) rotateY(0deg);
+}
+
+/* Door Opening Animation: Left panel glides left, Right panel glides right */
+.opening-experience.is-opening .door-wing--left {
+  transform: translateX(-102%) rotateY(-20deg);
+  opacity: 0;
+}
+
+.opening-experience.is-opening .door-wing--right {
+  transform: translateX(102%) rotateY(20deg);
+  opacity: 0;
 }
 
 /* Islamic Geometric Arch Inset on Door Panels */
@@ -229,7 +250,7 @@
   border-radius: 0 130px 2px 0;
 }
 
-/* Door Handles / Center Medallion Halves */
+/* Door Handles */
 .door-handle {
   position: absolute;
   top: 50%;
@@ -252,19 +273,8 @@
   border-radius: 0 6px 6px 0;
 }
 
-/* 3D Door Wings Opening State */
-.opening-experience.is-opening .door-wing--left {
-  transform: rotateY(-110deg) translateX(-10px);
-  opacity: 0.15;
-}
-
-.opening-experience.is-opening .door-wing--right {
-  transform: rotateY(110deg) translateX(10px);
-  opacity: 0.15;
-}
-
 /* ─────────────────────────────────────────────────────────────────────
-   6. CENTERPIECE (Grand Islamic Arch Invitation Card)
+   6. CENTERPIECE (Grand Islamic Arch Invitation Card on Cover)
    ───────────────────────────────────────────────────────────────────── */
 .door-centerpiece {
   position: relative;
@@ -280,9 +290,7 @@
   text-align: center;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.15s, transform 0.65s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
   will-change: opacity, transform;
 }
 
@@ -295,10 +303,10 @@
   pointer-events: none;
 }
 
-/* Centerpiece fades & recedes backward when doors unlatch */
+/* Centerpiece fades away gently without scaling */
 .opening-experience.is-opening .door-centerpiece {
   opacity: 0;
-  transform: scale(0.92) translateZ(-50px);
+  transform: translateY(-14px);
   pointer-events: none;
 }
 
@@ -379,7 +387,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   7. OPEN INVITATION CONTROL (Zero Blue Square, Subtle Gold Focus)
+   7. OPEN INVITATION BUTTON (Zero Blue Square, Subtle Gold Focus)
    ───────────────────────────────────────────────────────────────────── */
 .door__action-wrap {
   display: flex;
@@ -391,8 +399,8 @@
 .door__open-btn {
   appearance: none;
   -webkit-appearance: none;
-  background: none;
-  border: none;
+  background: transparent !important;
+  border: none !important;
   padding: 8px 24px;
   cursor: pointer;
   display: flex;
@@ -422,7 +430,7 @@
 .door__open-btn:active {
   outline: none !important;
   box-shadow: none !important;
-  background: none !important;
+  background: transparent !important;
 }
 
 /* Seal Medallion Icon */
@@ -442,12 +450,12 @@
 
 .door__open-btn:hover .door__seal-medallion,
 .door__open-btn:focus-visible .door__seal-medallion {
-  transform: scale(1.08) rotate(12deg);
+  transform: scale(1.06) rotate(8deg);
   box-shadow: 0 6px 24px rgba(197, 160, 89, 0.55), inset 0 1px 3px rgba(255, 255, 255, 0.6);
 }
 
 .door__open-btn:active .door__seal-medallion {
-  transform: scale(0.96) rotate(6deg);
+  transform: scale(0.97);
 }
 
 .door__seal-svg {
@@ -492,7 +500,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   8. FLY-THROUGH NAME REVEAL (In-Flight 3D Layer)
+   8. CLEAN, STABLE NAME REVEAL (NO SCALE, NO ZOOM, PURE FADE + TRANSLATEY)
    ───────────────────────────────────────────────────────────────────── */
 .portal-reveal {
   position: absolute;
@@ -501,67 +509,107 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 680px;
+  max-width: min(92vw, 680px);
   width: 90%;
   pointer-events: none;
-  opacity: 0;
-  transform: translateY(20px) scale(0.92);
-  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1) 1.05s, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.05s;
-  will-change: opacity, transform;
 }
 
-.opening-experience.is-opening .portal-reveal {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
+/* 1. Prelude ("In the name of Allah, we begin...") */
 .reveal__prelude {
   font-family: var(--font-serif);
-  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-size: clamp(0.95rem, 2.8vw, 1.3rem);
   font-style: italic;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--c-champagne);
-  margin-bottom: var(--sp-3);
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+  margin-bottom: var(--sp-4);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s,
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s,
+              filter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s;
+  will-change: opacity, transform, filter;
 }
 
+.opening-experience.is-opening .reveal__prelude {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  -webkit-filter: blur(0);
+}
+
+/* 2. Names Container ("SHEHARBAN & MUHAMMED FASIL") */
 .reveal__names-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   margin-bottom: var(--sp-4);
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  transition: opacity 1.0s cubic-bezier(0.22, 1, 0.36, 1) 2.0s,
+              transform 1.0s cubic-bezier(0.22, 1, 0.36, 1) 2.0s,
+              filter 1.0s cubic-bezier(0.22, 1, 0.36, 1) 2.0s;
+  will-change: opacity, transform, filter;
 }
 
+.opening-experience.is-opening .reveal__names-wrap {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  -webkit-filter: blur(0);
+}
+
+/* Bride and Groom Names — Fixed, readable, elegant proportion */
 .reveal__bride,
 .reveal__groom {
   font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 4.8vw, 2.8rem);
+  font-size: clamp(1.4rem, 5.2vw, 2.4rem);
   font-weight: 300;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: var(--c-cream);
-  line-height: 1.15;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9), 0 0 25px rgba(197, 160, 89, 0.3);
+  line-height: 1.25;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.95), 0 0 25px rgba(197, 160, 89, 0.3);
+  margin: 0;
+  white-space: normal;
+  max-width: 100%;
 }
 
 .reveal__amp {
   font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 3.2vw, 1.8rem);
+  font-size: clamp(1.1rem, 3.4vw, 1.6rem);
   font-style: italic;
   color: var(--c-gold);
-  margin-block: 1px;
+  margin-block: 2px;
 }
 
+/* 3. Date & Time ("25 OCTOBER 2026 • SUNDAY · 11:30 AM") */
 .reveal__date-wrap {
   display: flex;
   align-items: center;
-  gap: var(--sp-3);
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
   font-family: var(--font-sans);
-  font-size: clamp(0.62rem, 1.5vw, 0.74rem);
-  letter-spacing: 0.24em;
+  font-size: clamp(0.64rem, 1.8vw, 0.78rem);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--c-gold-lighter);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2.8s,
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2.8s;
+  will-change: opacity, transform;
+}
+
+.opening-experience.is-opening .reveal__date-wrap {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .reveal__dot {
@@ -573,8 +621,8 @@
    ───────────────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .door-frame {
-    width: 94vw;
-    height: 90vh;
+    width: 92vw;
+    height: 88vh;
     border-radius: 120px 120px 8px 8px;
   }
 
@@ -587,7 +635,7 @@
   }
 
   .door-centerpiece {
-    padding: 30px 18px 24px;
+    padding: 28px 16px 22px;
     border-radius: 96px 96px 6px 6px;
   }
 
@@ -596,7 +644,7 @@
   }
 
   .door__bismillah {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     margin-bottom: 4px;
   }
 
@@ -608,6 +656,17 @@
   .door__seal-svg {
     width: 26px;
     height: 26px;
+  }
+
+  .reveal__bride,
+  .reveal__groom {
+    font-size: clamp(1.35rem, 5.8vw, 1.85rem);
+    letter-spacing: 0.12em;
+  }
+
+  .reveal__date-wrap {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
   }
 }
 
@@ -633,7 +692,16 @@
     display: none;
   }
 
+  .portal-reveal .reveal__prelude,
+  .portal-reveal .reveal__names-wrap,
+  .portal-reveal .reveal__date-wrap {
+    transition-delay: 0.1s !important;
+    transition-duration: 0.4s !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
   .opening-experience {
-    transition: opacity 0.8s ease !important;
+    transition: opacity 0.6s ease !important;
   }
 }

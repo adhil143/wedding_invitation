@@ -31,8 +31,8 @@
       // 2. Trigger continuous 3D camera fly-through
       overlay.classList.add('is-opening');
 
-      // 3. Coordinate timeline (3.2 seconds total sequence)
-      var totalDuration = prefersReducedMotion ? 900 : 3200;
+      // 3. Coordinate timeline (4.5 seconds total sequence)
+      var totalDuration = prefersReducedMotion ? 800 : 4500;
 
       setTimeout(function () {
         finishOpening();
